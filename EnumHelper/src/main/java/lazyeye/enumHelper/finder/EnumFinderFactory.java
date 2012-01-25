@@ -1,16 +1,16 @@
-package lazyeye.enumHelper;
+package lazyeye.enumHelper.finder;
 
-import lazyeye.enumHelper.core.CodedEnum;
-import lazyeye.enumHelper.core.CodedEnumFinder;
-import lazyeye.enumHelper.core.EnumFinder;
-import lazyeye.enumHelper.core.OrdinalEnumFinder;
-import lazyeye.enumHelper.core.StringCodedEnumFinder;
-import lazyeye.enumHelper.core.strategy.EqualsIgnoreCaseMatcher;
-import lazyeye.enumHelper.core.strategy.EqualsMatcher;
-import lazyeye.enumHelper.core.strategy.IndexFinder;
-import lazyeye.enumHelper.core.strategy.PostfixMatcher;
-import lazyeye.enumHelper.core.strategy.PrefixMatcher;
-import lazyeye.enumHelper.core.strategy.RegexMatcher;
+import lazyeye.enumHelper.finder.core.CodedEnum;
+import lazyeye.enumHelper.finder.core.CodedEnumFinder;
+import lazyeye.enumHelper.finder.core.EnumFinder;
+import lazyeye.enumHelper.finder.core.OrdinalEnumFinder;
+import lazyeye.enumHelper.finder.core.StringCodedEnumFinder;
+import lazyeye.enumHelper.finder.core.strategy.EqualsIgnoreCaseMatcher;
+import lazyeye.enumHelper.finder.core.strategy.EqualsMatcher;
+import lazyeye.enumHelper.finder.core.strategy.IndexFinder;
+import lazyeye.enumHelper.finder.core.strategy.PostfixMatcher;
+import lazyeye.enumHelper.finder.core.strategy.PrefixMatcher;
+import lazyeye.enumHelper.finder.core.strategy.RegexMatcher;
 
 public class EnumFinderFactory {
 

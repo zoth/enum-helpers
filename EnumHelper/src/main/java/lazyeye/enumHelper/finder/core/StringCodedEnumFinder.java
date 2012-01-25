@@ -1,7 +1,7 @@
-package lazyeye.enumHelper.core;
+package lazyeye.enumHelper.finder.core;
 
-import lazyeye.enumHelper.StringEnumFinder;
-import lazyeye.enumHelper.core.strategy.MatcherStrategy;
+import lazyeye.enumHelper.finder.StringEnumFinder;
+import lazyeye.enumHelper.finder.core.strategy.MatcherStrategy;
 
 
 public class StringCodedEnumFinder<E extends Enum<E> & CodedEnum<String>> extends CodedEnumFinder<E, String, String> implements StringEnumFinder<E> {

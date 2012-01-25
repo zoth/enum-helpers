@@ -1,15 +1,15 @@
-package lazyeye.enumHelper;
+package lazyeye.enumHelper.finder;
 
-import lazyeye.enumHelper.core.CodedEnum;
-import lazyeye.enumHelper.core.strategy.AndMatcher;
-import lazyeye.enumHelper.core.strategy.EqualsIgnoreCaseMatcher;
-import lazyeye.enumHelper.core.strategy.EqualsMatcher;
-import lazyeye.enumHelper.core.strategy.MatcherStrategy;
-import lazyeye.enumHelper.core.strategy.OrMatcher;
-import lazyeye.enumHelper.core.strategy.PostfixMatcher;
-import lazyeye.enumHelper.core.strategy.PrefixMatcher;
-import lazyeye.enumHelper.core.strategy.RegexMatcher;
-import lazyeye.enumHelper.core.strategy.ToUpperMatcherFilter;
+import lazyeye.enumHelper.finder.core.CodedEnum;
+import lazyeye.enumHelper.finder.core.strategy.AndMatcher;
+import lazyeye.enumHelper.finder.core.strategy.EqualsIgnoreCaseMatcher;
+import lazyeye.enumHelper.finder.core.strategy.EqualsMatcher;
+import lazyeye.enumHelper.finder.core.strategy.MatcherStrategy;
+import lazyeye.enumHelper.finder.core.strategy.OrMatcher;
+import lazyeye.enumHelper.finder.core.strategy.PostfixMatcher;
+import lazyeye.enumHelper.finder.core.strategy.PrefixMatcher;
+import lazyeye.enumHelper.finder.core.strategy.RegexMatcher;
+import lazyeye.enumHelper.finder.core.strategy.ToUpperMatcherFilter;
 
 import org.junit.Assert;
 import org.junit.Test;

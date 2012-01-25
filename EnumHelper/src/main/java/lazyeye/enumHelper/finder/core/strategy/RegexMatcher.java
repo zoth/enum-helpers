@@ -1,9 +1,10 @@
-package lazyeye.enumHelper.core.strategy;
+package lazyeye.enumHelper.finder.core.strategy;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
-import lazyeye.enumHelper.core.CodedEnum;
+
+import lazyeye.enumHelper.finder.core.CodedEnum;
 
 public class RegexMatcher<E extends Enum<E> & CodedEnum<String>> implements MatcherStrategy<String, String> {
 

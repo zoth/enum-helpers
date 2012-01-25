@@ -4,8 +4,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import lazyeye.enumHelper.core.OrdinalEnumFinder;
-import lazyeye.enumHelper.core.strategy.IndexFinder;
+import lazyeye.enumHelper.finder.core.OrdinalEnumFinder;
+import lazyeye.enumHelper.finder.core.strategy.IndexFinder;
 
 public enum Weekday {
 	UNKNOWN,SUNDAY,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY;
