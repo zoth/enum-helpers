@@ -1,6 +1,6 @@
-package lazyeye.enumHelper.core;
+package lazyeye.enumHelper.finder.core;
 
-import lazyeye.enumHelper.core.strategy.IndexFinder;
+import lazyeye.enumHelper.finder.core.strategy.IndexFinder;
 
 public class OrdinalEnumFinder<E extends Enum<E>,I> implements EnumFinder<E, I> {
 

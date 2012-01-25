@@ -1,4 +1,4 @@
-package lazyeye.enumHelper.core.strategy;
+package lazyeye.enumHelper.finder.core.strategy;
 
 public class ToUpperMatcherFilter<C> extends MatcherFilter<String, C> {
 

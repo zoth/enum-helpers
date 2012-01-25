@@ -1,9 +1,10 @@
-package lazyeye.enumHelper.core;
+package lazyeye.enumHelper.finder.core;
 
 import java.util.Arrays;
 import java.util.List;
 
-import lazyeye.enumHelper.core.strategy.MatcherStrategy;
+import lazyeye.enumHelper.finder.core.strategy.MatcherStrategy;
+
 
 public class ListCodedEnumFinder <E extends Enum<E>, I, C> implements EnumFinder<E, I>{
 

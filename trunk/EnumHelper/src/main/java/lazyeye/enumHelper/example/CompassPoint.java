@@ -1,9 +1,8 @@
 package lazyeye.enumHelper.example;
 
-import lazyeye.enumHelper.EnumFinderFactory;
-import lazyeye.enumHelper.StringEnumFinder;
-import lazyeye.enumHelper.core.CodedEnum;
-import lazyeye.enumHelper.core.EnumFinder;
+import lazyeye.enumHelper.finder.EnumFinderFactory;
+import lazyeye.enumHelper.finder.core.CodedEnum;
+import lazyeye.enumHelper.finder.core.EnumFinder;
 
 public enum CompassPoint implements CodedEnum<String> {
 	NORTH("(?i:n|north)", "North"),

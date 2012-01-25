@@ -1,4 +1,4 @@
-package lazyeye.enumHelper.core;
+package lazyeye.enumHelper.finder.core;
 
 
 /**
