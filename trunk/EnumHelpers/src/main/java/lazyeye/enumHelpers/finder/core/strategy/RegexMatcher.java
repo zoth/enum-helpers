@@ -12,7 +12,7 @@ public class RegexMatcher<E extends Enum<E> & CodedEnum<String>> implements Matc
 	
 	public RegexMatcher(Class<E> clazz){
 		for(E enum_:clazz.getEnumConstants()){
-			String code = enum_.getFinderCode();
+			String code = enum_.finderCode();
 			if(code != null && !patterns.containsKey(code)){
 				patterns.put(code, Pattern.compile(code));
 			}

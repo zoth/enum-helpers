@@ -11,6 +11,6 @@ public interface CodedEnum<I> {
 	/**
 	 * @return
 	 */
-	abstract I getFinderCode();
+	abstract I finderCode();
 	
 }

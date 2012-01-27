@@ -99,7 +99,7 @@ public class MatcherTests {
 			id = s;
 		}
 
-		public String getFinderCode() {
+		public String finderCode() {
 			return id;
 		}
 	}
@@ -107,10 +107,10 @@ public class MatcherTests {
 	@Test
 	public void regexTest(){
 		MatcherStrategy<String, String> matcher = new RegexMatcher<TestEnum>(TestEnum.class);		
-		Assert.assertTrue(matcher.matches("true", TestEnum.TRUE.getFinderCode()));
-		Assert.assertTrue(matcher.matches("True", TestEnum.TRUE.getFinderCode()));
-		Assert.assertFalse(matcher.matches("blue", TestEnum.TRUE.getFinderCode()));
-		Assert.assertFalse(matcher.matches(null, TestEnum.TRUE.getFinderCode()));
+		Assert.assertTrue(matcher.matches("true", TestEnum.TRUE.finderCode()));
+		Assert.assertTrue(matcher.matches("True", TestEnum.TRUE.finderCode()));
+		Assert.assertFalse(matcher.matches("blue", TestEnum.TRUE.finderCode()));
+		Assert.assertFalse(matcher.matches(null, TestEnum.TRUE.finderCode()));
 		Assert.assertFalse(matcher.matches(null, null));
 		Assert.assertFalse(matcher.matches("true", null));
 	}
