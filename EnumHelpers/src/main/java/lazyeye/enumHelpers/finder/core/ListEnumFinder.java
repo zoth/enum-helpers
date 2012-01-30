@@ -5,14 +5,14 @@ import java.util.List;
 
 import lazyeye.enumHelpers.finder.core.strategy.MatcherStrategy;
 
-public class ListCodedEnumFinder<E extends Enum<E>, I, C> implements
+public class ListEnumFinder<E extends Enum<E>, I, C> implements
 		EnumFinder<E, I> {
 
 	private MatcherStrategy<I, C> matcher;
 	private E[] enums;
 	private List<C> codes;
 
-	public ListCodedEnumFinder(Class<E> clazz, MatcherStrategy<I, C> matcher_,
+	public ListEnumFinder(Class<E> clazz, MatcherStrategy<I, C> matcher_,
 			C... codes_) {
 		matcher = matcher_;
 		enums = clazz.getEnumConstants();
@@ -23,9 +23,9 @@ public class ListCodedEnumFinder<E extends Enum<E>, I, C> implements
 		codes = Arrays.asList(codes_);
 	}
 
-	public static <E extends Enum<E>, I> EnumFinder<E, I> simpleListCodedEnumFinder(
+	public static <E extends Enum<E>, I> EnumFinder<E, I> simpleListEnumFinder(
 			Class<E> clazz, MatcherStrategy<I, I> matcher, I... codes) {
-		return new ListCodedEnumFinder<E, I, I>(clazz, matcher, codes);
+		return new ListEnumFinder<E, I, I>(clazz, matcher, codes);
 	}
 
 	public E find(I input, E defaultValue) {
