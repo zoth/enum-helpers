@@ -9,7 +9,7 @@ import lazyeye.enumHelpers.finder.EnumCoding;
 import lazyeye.enumHelpers.finder.core.strategy.MatcherStrategy;
 
 public class AnnotatedCodedEnumFinder<E extends Enum<E>, C, I> implements
-		EnumFinder<E, I> {
+		EnumFinder<E, I>, EnumFinderCoding<E, C> {
 
 	private MatcherStrategy<I, C> matcher;
 	private Map<E, C> codesMap;
@@ -60,12 +60,6 @@ public class AnnotatedCodedEnumFinder<E extends Enum<E>, C, I> implements
 					"no method is annotated with tag value " + tag);
 		}
 	}
-	
-	public static <E extends Enum<E>, I> EnumFinder<E, I> simpleAnnotatedCodedEnumFinder(
-			Class<E> enumClass, Class<I> codeClass,
-			String tag, MatcherStrategy<I, I> matcher) {
-		return new AnnotatedCodedEnumFinder<E, I, I>(enumClass, codeClass, tag, matcher);
-	}
 
 
 	public E find(I input, E defaultValue) {
@@ -81,6 +75,11 @@ public class AnnotatedCodedEnumFinder<E extends Enum<E>, C, I> implements
 
 	public E find(I input) {
 		return find(input, null);
+	}
+
+
+	public C enumCoding(E enum_) {
+		return codesMap.get(enum_);
 	}
 
 }
