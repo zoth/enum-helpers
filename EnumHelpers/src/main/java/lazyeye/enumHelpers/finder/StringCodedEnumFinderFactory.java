@@ -13,27 +13,27 @@ import lazyeye.enumHelpers.finder.core.strategy.RegexMatcher;
 
 public class StringCodedEnumFinderFactory {
 
-	public static <E extends Enum<E> & StringCodedEnum> EnumFinder<E, String> equalsFinder(
+	public static <E extends Enum<E> & CodedEnum<String>> EnumFinder<E, String> equalsFinder(
 			Class<E> clazz) {
 		return stringCodedEnumFinder(clazz, new EqualsMatcher<String, String>());
 	}
 
-	public static <E extends Enum<E> & StringCodedEnum> EnumFinder<E, String> equalsIgnoreCaseFinder(
+	public static <E extends Enum<E> & CodedEnum<String>> EnumFinder<E, String> equalsIgnoreCaseFinder(
 			Class<E> clazz) {
 		return stringCodedEnumFinder(clazz, new EqualsIgnoreCaseMatcher());
 	}
 
-	public static <E extends Enum<E> & StringCodedEnum> EnumFinder<E, String> prefixFinder(
+	public static <E extends Enum<E> & CodedEnum<String>> EnumFinder<E, String> prefixFinder(
 			Class<E> clazz) {
 		return stringCodedEnumFinder(clazz, new PrefixMatcher());
 	}
 
-	public static <E extends Enum<E> & StringCodedEnum> EnumFinder<E, String> postfixFinder(
+	public static <E extends Enum<E> & CodedEnum<String>> EnumFinder<E, String> postfixFinder(
 			Class<E> clazz) {
 		return stringCodedEnumFinder(clazz, new PostfixMatcher());
 	}
 
-	public static <E extends Enum<E> & StringCodedEnum> EnumFinder<E,String> regexFinder(
+	public static <E extends Enum<E> & CodedEnum<String>> EnumFinder<E,String> regexFinder(
 			Class<E> clazz) {
 		return stringCodedEnumFinder(clazz, new RegexMatcher<E>(clazz));
 	}
