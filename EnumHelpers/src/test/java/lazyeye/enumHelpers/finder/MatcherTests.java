@@ -1,6 +1,6 @@
 package lazyeye.enumHelpers.finder;
 
-import lazyeye.enumHelpers.finder.core.CodedEnum;
+import lazyeye.enumHelpers.finder.core.EnumFinderCoding;
 import lazyeye.enumHelpers.finder.core.strategy.AndMatcher;
 import lazyeye.enumHelpers.finder.core.strategy.EqualsIgnoreCaseMatcher;
 import lazyeye.enumHelpers.finder.core.strategy.EqualsMatcher;
@@ -90,7 +90,7 @@ public class MatcherTests {
 		
 	}
 	
-	public enum TestEnum implements CodedEnum<String>{
+	public enum TestEnum implements StringCodedEnum{
 		TRUE("[tT]rue"),FALSE("[fF]alse"),UNKNOWN(null);
 		
 		final String id;
@@ -106,7 +106,13 @@ public class MatcherTests {
 
 	@Test
 	public void regexTest(){
-		MatcherStrategy<String, String> matcher = new RegexMatcher<TestEnum>(TestEnum.class);		
+		RegexMatcher<TestEnum> matcher = new RegexMatcher<TestEnum>(TestEnum.class);
+		matcher.setup(new EnumFinderCoding<TestEnum,String>(){
+
+			public String enumCoding(TestEnum enum1) {
+				return enum1.finderCode();
+			}});
+		
 		Assert.assertTrue(matcher.matches("true", TestEnum.TRUE.finderCode()));
 		Assert.assertTrue(matcher.matches("True", TestEnum.TRUE.finderCode()));
 		Assert.assertFalse(matcher.matches("blue", TestEnum.TRUE.finderCode()));
