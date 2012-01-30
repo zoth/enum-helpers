@@ -82,6 +82,33 @@ public class StringEnumFinderFactory {
 		return new StringEnumFinder<E>(new ListEnumFinder<E, String, String>(clazz, matcher, codes));
 	}
 	
+	public static <E extends Enum<E>> StringEnumFinder<E> listEqualsFinder(
+			Class<E> clazz, String... codes) {
+		return stringListEnumFinder(clazz, new EqualsMatcher<String, String>(), codes);
+	}
+
+	public static <E extends Enum<E>> StringEnumFinder<E> listEqualsIgnoreCaseFinder(
+			Class<E> clazz, String... codes) {
+		return stringListEnumFinder(clazz, new EqualsIgnoreCaseMatcher(), codes);
+	}
+
+	public static <E extends Enum<E>> StringEnumFinder<E> listPrefixFinder(
+			Class<E> clazz, String... codes) {
+		return stringListEnumFinder(clazz, new PrefixMatcher(), codes);
+	}
+
+	public static <E extends Enum<E>> StringEnumFinder<E> listPostfixFinder(
+			Class<E> clazz, String... codes) {
+		return stringListEnumFinder(clazz, new PostfixMatcher(), codes);
+	}
+	
+	public static <E extends Enum<E>> StringEnumFinder<E> listRegexFinder(
+			Class<E> clazz, String... codes) {
+		RegexMatcher<E> matcher = new RegexMatcher<E>(clazz);
+		ListEnumFinder<E, String, String> finder = new ListEnumFinder<E, String, String>(clazz, matcher, codes);
+		matcher.setup(finder);
+		return new StringEnumFinder<E>(finder);
+	}
 	
 
 
