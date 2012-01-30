@@ -1,6 +1,6 @@
 package lazyeye.enumHelpers.example;
 
-import lazyeye.enumHelpers.finder.StringCodedEnumFinderFactory;
+import lazyeye.enumHelpers.finder.StringEnumFinderFactory;
 import lazyeye.enumHelpers.finder.core.CodedEnum;
 import lazyeye.enumHelpers.finder.core.EnumFinder;
 
@@ -14,7 +14,7 @@ public enum RegexCompassPoint implements CodedEnum<String> {
 	private final String regex;
 	public final String name;
 
-	private static EnumFinder<RegexCompassPoint, String> helper = StringCodedEnumFinderFactory.regexFinder(RegexCompassPoint.class);
+	private static EnumFinder<RegexCompassPoint, String> helper = StringEnumFinderFactory.codedRegexFinder(RegexCompassPoint.class);
 
 	RegexCompassPoint(String r, String n) {
 		regex = r;
