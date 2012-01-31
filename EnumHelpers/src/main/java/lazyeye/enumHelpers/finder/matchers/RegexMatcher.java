@@ -1,23 +1,24 @@
-package lazyeye.enumHelpers.finder.core.strategy;
+package lazyeye.enumHelpers.finder.matchers;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
-import lazyeye.enumHelpers.finder.core.EnumFinderCoding;
+import lazyeye.enumHelpers.finder.core.CodingFinder;
 
 public class RegexMatcher<E extends Enum<E>> implements MatcherStrategy<String, String> {
 
 	private Map<String,Pattern> patterns = null;
 	Class<E> enumClass;
 	
-	public RegexMatcher(Class<E> clazz){
-		enumClass = clazz;		
+	public RegexMatcher(Class<E> clazz, CodingFinder<E,String> finder){
+		enumClass = clazz;	
+		setup(finder);
 	}
 	
-	public void setup(EnumFinderCoding<E,String> finder){
+	private void setup(CodingFinder<E,String> finder){
 		patterns = new HashMap<String,Pattern>();
 		for(E enum_:enumClass.getEnumConstants()){
-			String code = finder.enumCoding(enum_);
+			String code = finder.code(enum_);
 			if(code != null && !patterns.containsKey(code)){
 				patterns.put(code, Pattern.compile(code));
 			}

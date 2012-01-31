@@ -30,4 +30,5 @@ public enum CompassPoint2 {
 	public static CompassPoint2 find(String input){
 		return finder.find(input);
 	}
+	
 }

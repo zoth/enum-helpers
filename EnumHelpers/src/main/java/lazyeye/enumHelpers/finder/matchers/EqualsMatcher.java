@@ -1,4 +1,4 @@
-package lazyeye.enumHelpers.finder.core.strategy;
+package lazyeye.enumHelpers.finder.matchers;
 
 public class EqualsMatcher<I, C> implements MatcherStrategy<I, C> {
 	
