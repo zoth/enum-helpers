@@ -1,15 +1,15 @@
 package lazyeye.enumHelpers.finder;
 
-import lazyeye.enumHelpers.finder.core.EnumFinderCoding;
-import lazyeye.enumHelpers.finder.core.strategy.AndMatcher;
-import lazyeye.enumHelpers.finder.core.strategy.EqualsIgnoreCaseMatcher;
-import lazyeye.enumHelpers.finder.core.strategy.EqualsMatcher;
-import lazyeye.enumHelpers.finder.core.strategy.MatcherStrategy;
-import lazyeye.enumHelpers.finder.core.strategy.OrMatcher;
-import lazyeye.enumHelpers.finder.core.strategy.PostfixMatcher;
-import lazyeye.enumHelpers.finder.core.strategy.PrefixMatcher;
-import lazyeye.enumHelpers.finder.core.strategy.RegexMatcher;
-import lazyeye.enumHelpers.finder.core.strategy.ToUpperMatcherFilter;
+import lazyeye.enumHelpers.finder.core.CodingFinder;
+import lazyeye.enumHelpers.finder.matchers.AndMatcher;
+import lazyeye.enumHelpers.finder.matchers.EqualsIgnoreCaseMatcher;
+import lazyeye.enumHelpers.finder.matchers.EqualsMatcher;
+import lazyeye.enumHelpers.finder.matchers.MatcherStrategy;
+import lazyeye.enumHelpers.finder.matchers.OrMatcher;
+import lazyeye.enumHelpers.finder.matchers.PostfixMatcher;
+import lazyeye.enumHelpers.finder.matchers.PrefixMatcher;
+import lazyeye.enumHelpers.finder.matchers.RegexMatcher;
+import lazyeye.enumHelpers.finder.matchers.ToUpperMatcherFilter;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -105,14 +105,14 @@ public class MatcherTests {
 	}
 
 	@Test
-	public void regexTest(){
-		RegexMatcher<TestEnum> matcher = new RegexMatcher<TestEnum>(TestEnum.class);
-		matcher.setup(new EnumFinderCoding<TestEnum,String>(){
+	public void regexTest() {
+		RegexMatcher<TestEnum> matcher = new RegexMatcher<TestEnum>(
+				TestEnum.class, new CodingFinder<TestEnum, String>() {
+					public String code(TestEnum enum1) {
+						return enum1.finderCode();
+					}
+				});
 
-			public String enumCoding(TestEnum enum1) {
-				return enum1.finderCode();
-			}});
-		
 		Assert.assertTrue(matcher.matches("true", TestEnum.TRUE.finderCode()));
 		Assert.assertTrue(matcher.matches("True", TestEnum.TRUE.finderCode()));
 		Assert.assertFalse(matcher.matches("blue", TestEnum.TRUE.finderCode()));

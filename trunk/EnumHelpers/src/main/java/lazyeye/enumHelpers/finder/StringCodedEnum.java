@@ -1,7 +1,7 @@
 package lazyeye.enumHelpers.finder;
 
-import lazyeye.enumHelpers.finder.core.CodedEnum;
+import lazyeye.enumHelpers.finder.core.CodingTag;
 
-public interface StringCodedEnum extends CodedEnum<String> {
+public interface StringCodedEnum extends CodingTag<String> {
 
 }

@@ -6,18 +6,14 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import lazyeye.enumHelpers.finder.EnumCoding;
-import lazyeye.enumHelpers.finder.core.strategy.MatcherStrategy;
 
-public class AnnotatedCodedEnumFinder<E extends Enum<E>, C, I> implements
-		EnumFinder<E, I>, EnumFinderCoding<E, C> {
+public class AnnotatedCodeFinder<E extends Enum<E>, C> implements CodingFinder<E, C> {
 
-	private MatcherStrategy<I, C> matcher;
 	private Map<E, C> codesMap;
 
 	@SuppressWarnings("unchecked")
-	public AnnotatedCodedEnumFinder(Class<E> enumClass, Class<C> codeClass,
-			String tag, MatcherStrategy<I, C> matcher_){
-		matcher = matcher_;
+	public AnnotatedCodeFinder(Class<E> enumClass, Class<C> codeClass,
+			String tag){
 		codesMap = new EnumMap<E, C>(enumClass);
 		
 		boolean found = false;
@@ -61,24 +57,7 @@ public class AnnotatedCodedEnumFinder<E extends Enum<E>, C, I> implements
 		}
 	}
 
-
-	public E find(I input, E defaultValue) {
-		if (input != null) {
-			for (E enum_ : codesMap.keySet()) {
-				if (matcher.matches(input, codesMap.get(enum_))) {
-					return enum_;
-				}
-			}
-		}
-		return defaultValue;
-	}
-
-	public E find(I input) {
-		return find(input, null);
-	}
-
-
-	public C enumCoding(E enum_) {
+	public C code(E enum_) {
 		return codesMap.get(enum_);
 	}
 

@@ -3,22 +3,24 @@ package lazyeye.enumHelpers.finder.core;
 import java.util.Arrays;
 import java.util.List;
 
-import lazyeye.enumHelpers.finder.core.strategy.MatcherStrategy;
+import lazyeye.enumHelpers.finder.matchers.MatcherStrategy;
 
-public class CodedEnumFinder<E extends Enum<E> & CodedEnum<C>, I, C> implements EnumFinder<E, I>, EnumFinderCoding<E, C> {
+public class BaseEnumFinder<E extends Enum<E>, I, C> implements EnumFinder<E, I> {
 
 	private List<E> enums;
 	private MatcherStrategy<I, C> matcher;
+	private CodingFinder<E, C> codeFinder;
 
-	public CodedEnumFinder(Class<E> clazz, MatcherStrategy<I, C> matcher_) {
+	public BaseEnumFinder(Class<E> clazz, MatcherStrategy<I, C> matcher_, CodingFinder<E, C> codeFinder_) {
 		enums = Arrays.asList(clazz.getEnumConstants());
 		matcher = matcher_;
+		codeFinder = codeFinder_;
 	}
 
 	public E find(I input, E defaultValue) {
 		if (input != null) {
 			for (E enum_ : enums) {
-				if (matcher.matches(input, enum_.finderCode())) {
+				if (matcher.matches(input, codeFinder.code(enum_))) {
 					return enum_;
 				}
 			}
@@ -28,10 +30,6 @@ public class CodedEnumFinder<E extends Enum<E> & CodedEnum<C>, I, C> implements 
 
 	public E find(I input) {
 		return find(input, null);
-	}
-
-	public C enumCoding(E enum_) {
-		return enum_.finderCode();
 	}
 
 }

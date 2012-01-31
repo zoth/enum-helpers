@@ -6,7 +6,7 @@ package lazyeye.enumHelpers.finder.core;
  *
  * @param <I>
  */
-public interface CodedEnum<I> {
+public interface CodingTag<I> {
 	
 	/**
 	 * @return
