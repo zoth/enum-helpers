@@ -9,9 +9,9 @@ public class BaseEnumFinder<E extends Enum<E>, I, C> implements EnumFinder<E, I>
 
 	private List<E> enums;
 	private MatcherStrategy<I, C> matcher;
-	private CodingFinder<E, C> codeFinder;
+	private CodeProvider<E, C> codeFinder;
 
-	public BaseEnumFinder(Class<E> clazz, MatcherStrategy<I, C> matcher_, CodingFinder<E, C> codeFinder_) {
+	public BaseEnumFinder(Class<E> clazz, MatcherStrategy<I, C> matcher_, CodeProvider<E, C> codeFinder_) {
 		enums = Arrays.asList(clazz.getEnumConstants());
 		matcher = matcher_;
 		codeFinder = codeFinder_;

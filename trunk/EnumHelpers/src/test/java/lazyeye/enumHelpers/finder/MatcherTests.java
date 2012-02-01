@@ -1,6 +1,6 @@
 package lazyeye.enumHelpers.finder;
 
-import lazyeye.enumHelpers.finder.core.CodingFinder;
+import lazyeye.enumHelpers.finder.core.CodeProvider;
 import lazyeye.enumHelpers.finder.matchers.AndMatcher;
 import lazyeye.enumHelpers.finder.matchers.EqualsIgnoreCaseMatcher;
 import lazyeye.enumHelpers.finder.matchers.EqualsMatcher;
@@ -90,7 +90,7 @@ public class MatcherTests {
 		
 	}
 	
-	public enum TestEnum implements StringCodedEnum{
+	public enum TestEnum implements StringFinderCodeInterface{
 		TRUE("[tT]rue"),FALSE("[fF]alse"),UNKNOWN(null);
 		
 		final String id;
@@ -107,7 +107,7 @@ public class MatcherTests {
 	@Test
 	public void regexTest() {
 		RegexMatcher<TestEnum> matcher = new RegexMatcher<TestEnum>(
-				TestEnum.class, new CodingFinder<TestEnum, String>() {
+				TestEnum.class, new CodeProvider<TestEnum, String>() {
 					public String code(TestEnum enum1) {
 						return enum1.finderCode();
 					}

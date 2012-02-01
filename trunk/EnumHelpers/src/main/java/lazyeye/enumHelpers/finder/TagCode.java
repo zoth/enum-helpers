@@ -12,6 +12,6 @@ import java.lang.annotation.ElementType;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD,ElementType.FIELD})
-public @interface EnumCoding {
+public @interface TagCode {
 	String value();
 }

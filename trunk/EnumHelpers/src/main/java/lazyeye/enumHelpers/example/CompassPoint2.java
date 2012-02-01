@@ -1,8 +1,8 @@
 package lazyeye.enumHelpers.example;
 
-import lazyeye.enumHelpers.finder.EnumCoding;
+import lazyeye.enumHelpers.finder.TagCode;
 import lazyeye.enumHelpers.finder.StringEnumFinder;
-import lazyeye.enumHelpers.finder.StringEnumFinderFactory;
+import lazyeye.enumHelpers.finder.StringFinderFactory;
 
 public enum CompassPoint2 {
 	NORTH("n", "North"), EAST("e", "East"), SOUTH("s", "South"), WEST("w",
@@ -16,7 +16,7 @@ public enum CompassPoint2 {
 		name = name_;
 	}
 
-	@EnumCoding("id")
+	@TagCode("id")
 	public String getId() {
 		return id;
 	}
@@ -25,7 +25,7 @@ public enum CompassPoint2 {
 		return name;
 	}
 
-	private static StringEnumFinder<CompassPoint2> finder = StringEnumFinderFactory.annotatedEqualsFinder(CompassPoint2.class, "id");
+	private static StringEnumFinder<CompassPoint2> finder = StringFinderFactory.tagCodeEquals(CompassPoint2.class, "id");
 	
 	public static CompassPoint2 find(String input){
 		return finder.find(input);
