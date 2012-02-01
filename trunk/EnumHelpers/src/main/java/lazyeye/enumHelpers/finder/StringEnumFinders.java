@@ -45,7 +45,6 @@ public class StringEnumFinders {
 		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, keyProvider));
 	}
 
-
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchRegex(
 			Class<E> clazz, KeyProvider<E, String> keyProvider) {
 		RegexMatcher<E> matcher = new RegexMatcher<E>(clazz,keyProvider);
