@@ -18,18 +18,18 @@ public class RegexMatcher<E extends Enum<E>> implements MatcherStrategy<String, 
 	private void setup(KeyProvider<E,String> finder){
 		patterns = new HashMap<String,Pattern>();
 		for(E enum_:enumClass.getEnumConstants()){
-			String code = finder.key(enum_);
-			if(code != null && !patterns.containsKey(code)){
-				patterns.put(code, Pattern.compile(code));
+			String key = finder.key(enum_);
+			if(key != null && !patterns.containsKey(key)){
+				patterns.put(key, Pattern.compile(key));
 			}
 		}
 	}
 	
-	public boolean matches(String input, String code) {
-		if(input == null || code == null || patterns == null){
+	public boolean matches(String input, String key) {
+		if(input == null || key == null || patterns == null){
 			return false;
 		}
-		return  patterns.get(code).matcher(input).matches();
+		return  patterns.get(key).matcher(input).matches();
 	}
 
 }

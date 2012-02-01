@@ -4,29 +4,40 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import lazyeye.enumHelpers.finder.core.IndexProvider;
-import lazyeye.enumHelpers.finder.core.OrdinalEnumFinder;
+import lazyeye.enumHelpers.finder.core.EnumFinder;
+import lazyeye.enumHelpers.finder.core.BaseEnumFinder;
+import lazyeye.enumHelpers.finder.matchers.MatcherStrategy;
+import lazyeye.enumHelpers.finder.IntegerKeyedProvider;
 
 public enum Weekday {
-	UNKNOWN,SUNDAY,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY;
 	
-	private static OrdinalEnumFinder<Weekday,Date> helper = 
-		new OrdinalEnumFinder<Weekday,Date>(Weekday.class, new IndexProvider<Date>() {
-			public int index(Date input) {
-				if(input != null){
-					GregorianCalendar calendar = new GregorianCalendar();
-					calendar.setTime(input);
-					return calendar.get(Calendar.DAY_OF_WEEK);
-				}
-				return 0;
-			}
-		});
+	UNKNOWN(null),SUNDAY(1),MONDAY(2),TUESDAY(3),WEDNESDAY(4),THURSDAY(5),FRIDAY(6),SATURDAY(7);
 	
-	public static Weekday find(Date d, Weekday defaultValue){
-		return helper.find(d, defaultValue);
+	public final Integer id;
+	
+	Weekday(Integer id_){
+		id = id_;
 	}
 	
+	private static EnumFinder<Weekday, Date> finder = new BaseEnumFinder<Weekday, Date, Integer>(
+			Weekday.class, new MatcherStrategy<Date, Integer>() {
+
+				public boolean matches(Date input, Integer key) {
+					if (input != null && key != null) {
+						GregorianCalendar calendar = new GregorianCalendar();
+						calendar.setTime(input);
+						return calendar.get(Calendar.DAY_OF_WEEK) == key.intValue();
+					}
+					return false;
+				}
+			}, new IntegerKeyedProvider<Weekday>() {
+
+				public Integer key(Weekday enum1) {
+					return enum1.id;
+				}
+			});
+	
 	public static Weekday find(Date d){
-		return find(d, UNKNOWN);
+		return finder.find(d, UNKNOWN);
 	}
 }

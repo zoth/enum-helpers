@@ -1,15 +1,15 @@
 package lazyeye.enumHelpers.finder.matchers;
 
-public abstract class MatcherFilter<I, C> implements MatcherStrategy<I, C> {
-	private MatcherStrategy<I, C> matcher;
+public abstract class MatcherFilter<I, K> implements MatcherStrategy<I, K> {
+	private MatcherStrategy<I, K> matcher;
 	
-	public MatcherFilter(MatcherStrategy<I, C> m){
+	public MatcherFilter(MatcherStrategy<I, K> m){
 		matcher = m;
 	}
 	
 	abstract I filterInput(I input);
 	
-	public boolean matches(I input, C code) {
-		return matcher.matches(filterInput(input), code);
+	public boolean matches(I input, K key) {
+		return matcher.matches(filterInput(input), key);
 	}
 }

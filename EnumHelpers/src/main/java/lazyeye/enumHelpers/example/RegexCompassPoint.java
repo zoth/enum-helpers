@@ -14,7 +14,6 @@ public enum RegexCompassPoint {
 	private final String regex;
 	public final String name;
 
-
 	RegexCompassPoint(String r, String n) {
 		regex = r;
 		name = n;

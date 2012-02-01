@@ -1,8 +1,8 @@
 package lazyeye.enumHelpers.finder.matchers;
 
-public class ToUpperMatcherFilter<C> extends MatcherFilter<String, C> {
+public class ToUpperMatcherFilter<K> extends MatcherFilter<String, K> {
 
-	public ToUpperMatcherFilter(MatcherStrategy<String, C> m) {
+	public ToUpperMatcherFilter(MatcherStrategy<String, K> m) {
 		super(m);
 	}
 
