@@ -1,12 +1,12 @@
 package lazyeye.enumHelpers.finder.matchers;
 
-public class EqualsMatcher<I, C> implements MatcherStrategy<I, C> {
+public class EqualsMatcher<I, K> implements MatcherStrategy<I, K> {
 	
-	public boolean matches(I input, C code) {
+	public boolean matches(I input, K key) {
 		if(input == null){
-			return code == null;
+			return key == null;
 		}
-		return input.equals(code);
+		return input.equals(key);
 	}
 
 }
