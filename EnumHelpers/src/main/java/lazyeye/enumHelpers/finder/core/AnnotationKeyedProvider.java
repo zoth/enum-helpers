@@ -6,20 +6,20 @@ import java.lang.reflect.Method;
 import java.util.EnumMap;
 import java.util.Map;
 
-import lazyeye.enumHelpers.finder.TagCode;
+import lazyeye.enumHelpers.finder.EnumFinderKey;
 
-public class TagCodeProvider<E extends Enum<E>, C> implements CodeProvider<E, C> {
+public class AnnotationKeyedProvider<E extends Enum<E>, C> implements KeyProvider<E, C> {
 
 	private Map<E, C> codesMap;
 
 	@SuppressWarnings("unchecked")
-	public TagCodeProvider(Class<E> enumClass, Class<C> codeClass,
+	public AnnotationKeyedProvider(Class<E> enumClass, Class<C> codeClass,
 			String tag){
 		codesMap = new EnumMap<E, C>(enumClass);
 		
 		boolean found = false;
 		for(Field field:enumClass.getDeclaredFields()){
-			TagCode enumCoding = field.getAnnotation(TagCode.class);
+			EnumFinderKey enumCoding = field.getAnnotation(EnumFinderKey.class);
 			if (enumCoding != null && enumCoding.value().equals(tag)) {
 				if (found) {
 					throw new IllegalArgumentException(
@@ -50,7 +50,7 @@ public class TagCodeProvider<E extends Enum<E>, C> implements CodeProvider<E, C>
 		
 		for (Method method : enumClass.getDeclaredMethods()) {
 
-			TagCode enumCoding = method.getAnnotation(TagCode.class);
+			EnumFinderKey enumCoding = method.getAnnotation(EnumFinderKey.class);
 			if (enumCoding != null && enumCoding.value().equals(tag)) {
 				if (found) {
 					throw new IllegalArgumentException(
@@ -95,7 +95,7 @@ public class TagCodeProvider<E extends Enum<E>, C> implements CodeProvider<E, C>
 	}
 	
 
-	public C code(E enum_) {
+	public C key(E enum_) {
 		return codesMap.get(enum_);
 	}
 

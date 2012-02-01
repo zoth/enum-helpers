@@ -1,6 +1,6 @@
 package lazyeye.enumHelpers.example;
 
-import lazyeye.enumHelpers.finder.TagCode;
+import lazyeye.enumHelpers.finder.EnumFinderKey;
 import lazyeye.enumHelpers.finder.StringEnumFinder;
 import lazyeye.enumHelpers.finder.StringEnumFinders;
 
@@ -8,7 +8,7 @@ public enum CompassPoint2 {
 	NORTH("n", "North"), EAST("e", "East"), SOUTH("s", "South"), WEST("w",
 			"West"), UNKNOWN(null, null);
 
-	@TagCode("id")
+	@EnumFinderKey("id")
 	public final String id;
 	
 	public final String name;

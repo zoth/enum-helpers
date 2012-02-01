@@ -3,16 +3,16 @@ package lazyeye.enumHelpers.finder.core;
 
 public class OrdinalEnumFinder<E extends Enum<E>,I> implements EnumFinder<E, I> {
 
-	private IndexFinder<I> indexFinder;
+	private IndexProvider<I> indexProvider;
 	private E[] enums;
 	
-	public OrdinalEnumFinder(Class<E> clazz, IndexFinder<I> indexFinder_){
-		indexFinder = indexFinder_;
+	public OrdinalEnumFinder(Class<E> clazz, IndexProvider<I> indexProvider_){
+		indexProvider = indexProvider_;
 		enums = clazz.getEnumConstants();
 	}
 	
 	public E find(I input, E defaultValue){
-		int index = indexFinder.findIndex(input);
+		int index = indexProvider.index(input);
 		if(index >= 0 && index < enums.length){
 			return enums[index];
 		}

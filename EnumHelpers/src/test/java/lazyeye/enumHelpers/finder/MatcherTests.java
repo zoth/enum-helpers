@@ -1,6 +1,6 @@
 package lazyeye.enumHelpers.finder;
 
-import lazyeye.enumHelpers.finder.core.CodeProvider;
+import lazyeye.enumHelpers.finder.core.KeyProvider;
 import lazyeye.enumHelpers.finder.matchers.AndMatcher;
 import lazyeye.enumHelpers.finder.matchers.EqualsIgnoreCaseMatcher;
 import lazyeye.enumHelpers.finder.matchers.EqualsMatcher;
@@ -104,8 +104,8 @@ public class MatcherTests {
 	@Test
 	public void regexTest() {
 		RegexMatcher<TestEnum> matcher = new RegexMatcher<TestEnum>(
-				TestEnum.class, new CodeProvider<TestEnum, String>() {
-					public String code(TestEnum enum1) {
+				TestEnum.class, new KeyProvider<TestEnum, String>() {
+					public String key(TestEnum enum1) {
 						return enum1.id;
 					}
 				});
