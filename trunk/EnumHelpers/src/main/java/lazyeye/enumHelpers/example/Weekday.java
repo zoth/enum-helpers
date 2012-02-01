@@ -4,15 +4,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import lazyeye.enumHelpers.finder.core.IndexFinder;
+import lazyeye.enumHelpers.finder.core.IndexProvider;
 import lazyeye.enumHelpers.finder.core.OrdinalEnumFinder;
 
 public enum Weekday {
 	UNKNOWN,SUNDAY,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY;
 	
 	private static OrdinalEnumFinder<Weekday,Date> helper = 
-		new OrdinalEnumFinder<Weekday,Date>(Weekday.class, new IndexFinder<Date>() {
-			public int findIndex(Date input) {
+		new OrdinalEnumFinder<Weekday,Date>(Weekday.class, new IndexProvider<Date>() {
+			public int index(Date input) {
 				if(input != null){
 					GregorianCalendar calendar = new GregorianCalendar();
 					calendar.setTime(input);

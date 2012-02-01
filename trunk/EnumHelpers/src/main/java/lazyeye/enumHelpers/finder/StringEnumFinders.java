@@ -1,8 +1,8 @@
 package lazyeye.enumHelpers.finder;
 
-import lazyeye.enumHelpers.finder.core.TagCodeProvider;
+import lazyeye.enumHelpers.finder.core.AnnotationKeyedProvider;
 import lazyeye.enumHelpers.finder.core.BaseEnumFinder;
-import lazyeye.enumHelpers.finder.core.CodeProvider;
+import lazyeye.enumHelpers.finder.core.KeyProvider;
 import lazyeye.enumHelpers.finder.matchers.EqualsIgnoreCaseMatcher;
 import lazyeye.enumHelpers.finder.matchers.EqualsMatcher;
 import lazyeye.enumHelpers.finder.matchers.MatcherStrategy;
@@ -14,8 +14,8 @@ public class StringEnumFinders {
 
 	public static <E extends Enum<E>> StringEnumFinder<E> tagCode(
 			Class<E> clazz, String tag, MatcherStrategy<String, String> matcher) {
-		CodeProvider<E, String> codingFinder = new TagCodeProvider<E,String>(clazz, String.class, tag);
-		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, codingFinder));
+		KeyProvider<E, String> keyProvider = new AnnotationKeyedProvider<E,String>(clazz, String.class, tag);
+		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, keyProvider));
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> tagCodeEquals(
@@ -40,41 +40,41 @@ public class StringEnumFinders {
 
 	public static <E extends Enum<E>> StringEnumFinder<E> tagCodeRegex(
 			Class<E> clazz, String tag) {
-		CodeProvider<E, String> codingFinder = new TagCodeProvider<E,String>(clazz, String.class, tag);
-		RegexMatcher<E> matcher = new RegexMatcher<E>(clazz,codingFinder);
-		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, codingFinder));
+		KeyProvider<E, String> keyProvider = new AnnotationKeyedProvider<E,String>(clazz, String.class, tag);
+		RegexMatcher<E> matcher = new RegexMatcher<E>(clazz,keyProvider);
+		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, keyProvider));
 	}
 
 
 	public static <E extends Enum<E>> StringEnumFinder<E> codeProviderRegex(
-			Class<E> clazz, CodeProvider<E, String> codingFinder) {
-		RegexMatcher<E> matcher = new RegexMatcher<E>(clazz,codingFinder);
-		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, codingFinder));
+			Class<E> clazz, KeyProvider<E, String> keyProvider) {
+		RegexMatcher<E> matcher = new RegexMatcher<E>(clazz,keyProvider);
+		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, keyProvider));
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> codeProviderFinder(
-			Class<E> clazz, MatcherStrategy<String, String> matcher, StringCodeProvider<E> codingFinder) {
-		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, codingFinder));
+			Class<E> clazz, MatcherStrategy<String, String> matcher, StringKeyedProvider<E> keyProvider) {
+		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, keyProvider));
 	}
 	
 	public static <E extends Enum<E>> StringEnumFinder<E> codeProviderEquals(
-			Class<E> clazz, StringCodeProvider<E> codingFinder) {
-		return codeProviderFinder(clazz, new EqualsMatcher<String, String>(), codingFinder);
+			Class<E> clazz, StringKeyedProvider<E> keyProvider) {
+		return codeProviderFinder(clazz, new EqualsMatcher<String, String>(), keyProvider);
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> codeProviderEqualsIgnoreCase(
-			Class<E> clazz, StringCodeProvider<E> codingFinder) {
-		return codeProviderFinder(clazz, new EqualsIgnoreCaseMatcher(), codingFinder);
+			Class<E> clazz, StringKeyedProvider<E> keyProvider) {
+		return codeProviderFinder(clazz, new EqualsIgnoreCaseMatcher(), keyProvider);
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> codeProviderPrefix(
-			Class<E> clazz, StringCodeProvider<E> codingFinder) {
-		return codeProviderFinder(clazz, new PrefixMatcher(), codingFinder);
+			Class<E> clazz, StringKeyedProvider<E> keyProvider) {
+		return codeProviderFinder(clazz, new PrefixMatcher(), keyProvider);
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> codeProviderPostfix(
-			Class<E> clazz, StringCodeProvider<E> codingFinder) {
-		return codeProviderFinder(clazz, new PostfixMatcher(), codingFinder);
+			Class<E> clazz, StringKeyedProvider<E> keyProvider) {
+		return codeProviderFinder(clazz, new PostfixMatcher(), keyProvider);
 	}
 
 
