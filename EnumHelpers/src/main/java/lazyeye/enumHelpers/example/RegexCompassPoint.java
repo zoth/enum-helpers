@@ -1,10 +1,10 @@
 package lazyeye.enumHelpers.example;
 
-import lazyeye.enumHelpers.finder.StringCodedEnum;
+import lazyeye.enumHelpers.finder.StringFinderCodeInterface;
 import lazyeye.enumHelpers.finder.StringEnumFinder;
-import lazyeye.enumHelpers.finder.StringEnumFinderFactory;
+import lazyeye.enumHelpers.finder.StringFinderFactory;
 
-public enum RegexCompassPoint implements StringCodedEnum {
+public enum RegexCompassPoint implements StringFinderCodeInterface {
 	NORTH("(?i:n|north)", "North"),
 	EAST("(?i:e|east)", "East"),
 	SOUTH("(?i:s|south)", "South"),
@@ -14,7 +14,7 @@ public enum RegexCompassPoint implements StringCodedEnum {
 	private final String regex;
 	public final String name;
 
-	private static StringEnumFinder<RegexCompassPoint> helper = StringEnumFinderFactory.codedRegexFinder(RegexCompassPoint.class);
+	private static StringEnumFinder<RegexCompassPoint> helper = StringFinderFactory.codedRegex(RegexCompassPoint.class);
 
 	RegexCompassPoint(String r, String n) {
 		regex = r;

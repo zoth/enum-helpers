@@ -5,21 +5,21 @@ import java.lang.reflect.Method;
 import java.util.EnumMap;
 import java.util.Map;
 
-import lazyeye.enumHelpers.finder.EnumCoding;
+import lazyeye.enumHelpers.finder.TagCode;
 
-public class AnnotatedCodeFinder<E extends Enum<E>, C> implements CodingFinder<E, C> {
+public class TagCodeProvider<E extends Enum<E>, C> implements CodeProvider<E, C> {
 
 	private Map<E, C> codesMap;
 
 	@SuppressWarnings("unchecked")
-	public AnnotatedCodeFinder(Class<E> enumClass, Class<C> codeClass,
+	public TagCodeProvider(Class<E> enumClass, Class<C> codeClass,
 			String tag){
 		codesMap = new EnumMap<E, C>(enumClass);
 		
 		boolean found = false;
 		for (Method method : enumClass.getDeclaredMethods()) {
 
-			EnumCoding enumCoding = method.getAnnotation(EnumCoding.class);
+			TagCode enumCoding = method.getAnnotation(TagCode.class);
 			if (enumCoding != null && enumCoding.value().equals(tag)) {
 				if (found) {
 					throw new IllegalArgumentException(
