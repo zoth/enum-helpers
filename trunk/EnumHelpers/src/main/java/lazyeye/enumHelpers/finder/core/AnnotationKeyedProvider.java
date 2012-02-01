@@ -14,13 +14,13 @@ public class AnnotationKeyedProvider<E extends Enum<E>, C> implements KeyProvide
 
 	@SuppressWarnings("unchecked")
 	public AnnotationKeyedProvider(Class<E> enumClass, Class<C> codeClass,
-			String tag){
+			String annotatedId){
 		codesMap = new EnumMap<E, C>(enumClass);
 		
 		boolean found = false;
 		for(Field field:enumClass.getDeclaredFields()){
 			EnumFinderKey enumCoding = field.getAnnotation(EnumFinderKey.class);
-			if (enumCoding != null && enumCoding.value().equals(tag)) {
+			if (enumCoding != null && enumCoding.value().equals(annotatedId)) {
 				if (found) {
 					throw new IllegalArgumentException(
 							"only one field or method can be annotated with same tag value");
@@ -51,7 +51,7 @@ public class AnnotationKeyedProvider<E extends Enum<E>, C> implements KeyProvide
 		for (Method method : enumClass.getDeclaredMethods()) {
 
 			EnumFinderKey enumCoding = method.getAnnotation(EnumFinderKey.class);
-			if (enumCoding != null && enumCoding.value().equals(tag)) {
+			if (enumCoding != null && enumCoding.value().equals(annotatedId)) {
 				if (found) {
 					throw new IllegalArgumentException(
 							"only one field or method can be annotated with same tag value");
@@ -90,7 +90,7 @@ public class AnnotationKeyedProvider<E extends Enum<E>, C> implements KeyProvide
 		}
 		if (!found) {
 			throw new IllegalArgumentException(
-					"no method is annotated with tag value " + tag);
+					"no method is annotated with id value " + annotatedId);
 		}
 	}
 	

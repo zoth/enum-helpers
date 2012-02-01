@@ -21,7 +21,7 @@ public enum RegexCompassPoint {
 	}
 
 	private static StringEnumFinder<RegexCompassPoint> helper = 
-		StringEnumFinders.codeProviderRegex(RegexCompassPoint.class,
+		StringEnumFinders.fromKeyProviderMatchRegex(RegexCompassPoint.class,
 			new StringKeyedProvider<RegexCompassPoint>() {
 				public String key(RegexCompassPoint enum1) {
 					return enum1.regex;
