@@ -6,7 +6,7 @@ import lazyeye.enumHelpers.finder.core.CodeProvider;
 import lazyeye.enumHelpers.finder.matchers.EqualsMatcher;
 import lazyeye.enumHelpers.finder.matchers.MatcherStrategy;
 
-public class IntegerFinderFactory {
+public class IntegerEnumFinders {
 	
 	public static <E extends Enum<E>> IntegerEnumFinder<E> tagCoded(
 			Class<E> clazz, String tag, MatcherStrategy<Integer, Integer> matcher) {
