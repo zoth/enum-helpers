@@ -20,8 +20,8 @@ public enum RegexCompassPoint {
 		name = n;
 	}
 
-	private static StringEnumFinder<RegexCompassPoint> helper = StringFinderFactory
-	.codeProviderRegex(RegexCompassPoint.class,
+	private static StringEnumFinder<RegexCompassPoint> helper = 
+		StringFinderFactory.codeProviderRegex(RegexCompassPoint.class,
 			new StringCodeProvider<RegexCompassPoint>() {
 				public String code(RegexCompassPoint enum1) {
 					return enum1.regex;
