@@ -2,7 +2,7 @@ package lazyeye.enumHelpers.example;
 
 import lazyeye.enumHelpers.finder.StringCodeProvider;
 import lazyeye.enumHelpers.finder.StringEnumFinder;
-import lazyeye.enumHelpers.finder.StringFinderFactory;
+import lazyeye.enumHelpers.finder.StringEnumFinders;
 
 public enum RegexCompassPoint {
 	NORTH("(?i:n|north)", "North"),
@@ -21,7 +21,7 @@ public enum RegexCompassPoint {
 	}
 
 	private static StringEnumFinder<RegexCompassPoint> helper = 
-		StringFinderFactory.codeProviderRegex(RegexCompassPoint.class,
+		StringEnumFinders.codeProviderRegex(RegexCompassPoint.class,
 			new StringCodeProvider<RegexCompassPoint>() {
 				public String code(RegexCompassPoint enum1) {
 					return enum1.regex;

@@ -10,7 +10,7 @@ import lazyeye.enumHelpers.finder.matchers.PostfixMatcher;
 import lazyeye.enumHelpers.finder.matchers.PrefixMatcher;
 import lazyeye.enumHelpers.finder.matchers.RegexMatcher;
 
-public class StringFinderFactory {
+public class StringEnumFinders {
 
 	public static <E extends Enum<E>> StringEnumFinder<E> tagCode(
 			Class<E> clazz, String tag, MatcherStrategy<String, String> matcher) {
