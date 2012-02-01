@@ -18,7 +18,8 @@ public enum CompassPoint2 {
 		name = name_;
 	}
 
-	private static StringEnumFinder<CompassPoint2> finder = StringEnumFinders.tagCodeEquals(CompassPoint2.class, "id");
+	
+	private static StringEnumFinder<CompassPoint2> finder = StringEnumFinders.fromAnnotatedKeyMatchEquals(CompassPoint2.class, "id");
 	
 	public static CompassPoint2 find(String input){
 		return finder.find(input);
