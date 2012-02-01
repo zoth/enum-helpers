@@ -90,7 +90,7 @@ public class MatcherTests {
 		
 	}
 	
-	public enum TestEnum implements StringFinderCodeInterface{
+	public enum TestEnum{
 		TRUE("[tT]rue"),FALSE("[fF]alse"),UNKNOWN(null);
 		
 		final String id;
@@ -99,9 +99,6 @@ public class MatcherTests {
 			id = s;
 		}
 
-		public String finderCode() {
-			return id;
-		}
 	}
 
 	@Test
@@ -109,14 +106,14 @@ public class MatcherTests {
 		RegexMatcher<TestEnum> matcher = new RegexMatcher<TestEnum>(
 				TestEnum.class, new CodeProvider<TestEnum, String>() {
 					public String code(TestEnum enum1) {
-						return enum1.finderCode();
+						return enum1.id;
 					}
 				});
 
-		Assert.assertTrue(matcher.matches("true", TestEnum.TRUE.finderCode()));
-		Assert.assertTrue(matcher.matches("True", TestEnum.TRUE.finderCode()));
-		Assert.assertFalse(matcher.matches("blue", TestEnum.TRUE.finderCode()));
-		Assert.assertFalse(matcher.matches(null, TestEnum.TRUE.finderCode()));
+		Assert.assertTrue(matcher.matches("true", TestEnum.TRUE.id));
+		Assert.assertTrue(matcher.matches("True", TestEnum.TRUE.id));
+		Assert.assertFalse(matcher.matches("blue", TestEnum.TRUE.id));
+		Assert.assertFalse(matcher.matches(null, TestEnum.TRUE.id));
 		Assert.assertFalse(matcher.matches(null, null));
 		Assert.assertFalse(matcher.matches("true", null));
 	}
