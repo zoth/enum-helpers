@@ -10,24 +10,24 @@ public class Show {
 		System.out.println(Weekday.find(null));
 		System.out.println(Weekday.find(new GregorianCalendar(1953, 8, 28).getTime()));
 		System.out.println(Weekday.find(new GregorianCalendar(1958, 2, 17).getTime()));
-		System.out.println(RegexCompassPoint.find("N").name);
-		System.out.println(RegexCompassPoint.find("nne").name);
-		System.out.println(RegexCompassPoint.find("ne").name);
-		System.out.println(RegexCompassPoint.find("ene").name);
-		System.out.println(RegexCompassPoint.find("east").name);
-		System.out.println(RegexCompassPoint.find("ese").name);
-		System.out.println(RegexCompassPoint.find("se").name);
-		System.out.println(RegexCompassPoint.find("sse").name);
-		System.out.println(RegexCompassPoint.find("s").name);
-		System.out.println(RegexCompassPoint.find("ssw").name);
-		System.out.println(RegexCompassPoint.find("sw").name);
-		System.out.println(RegexCompassPoint.find("wsw").name);
-		System.out.println(RegexCompassPoint.find("w").name);
-		System.out.println(RegexCompassPoint.find("wnw").name);
-		System.out.println(RegexCompassPoint.find("nw").name);
-		System.out.println(RegexCompassPoint.find("nnw").name);
-		System.out.println(RegexCompassPoint.find("zoth").name);
-		System.out.println(CompassPoint2.find("e"));
+		System.out.println(RegexCompassPoint.find("N"));
+		System.out.println(RegexCompassPoint.find("nne"));
+		System.out.println(RegexCompassPoint.find("ne"));
+		System.out.println(RegexCompassPoint.find("ene"));
+		System.out.println(RegexCompassPoint.find("east"));
+		System.out.println(RegexCompassPoint.find("ese"));
+		System.out.println(RegexCompassPoint.find("se"));
+		System.out.println(RegexCompassPoint.find("sse"));
+		System.out.println(RegexCompassPoint.find("s"));
+		System.out.println(RegexCompassPoint.find("ssw"));
+		System.out.println(RegexCompassPoint.find("sw"));
+		System.out.println(RegexCompassPoint.find("wsw"));
+		System.out.println(RegexCompassPoint.find("w"));
+		System.out.println(RegexCompassPoint.find("wnw"));
+		System.out.println(RegexCompassPoint.find("nw"));
+		System.out.println(RegexCompassPoint.find("nnw"));
+		System.out.println(RegexCompassPoint.find("zoth"));
+		System.out.println(CompassPoint.find("e"));
 	}
 
 }

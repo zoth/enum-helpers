@@ -3,7 +3,6 @@ package lazyeye.enumHelpers.example;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 import lazyeye.enumHelpers.finder.core.EnumFinder;
 import lazyeye.enumHelpers.finder.core.BaseEnumFinder;
 import lazyeye.enumHelpers.finder.matchers.MatcherStrategy;
@@ -11,7 +10,14 @@ import lazyeye.enumHelpers.finder.IntegerKeyedProvider;
 
 public enum Weekday {
 	
-	UNKNOWN(null),SUNDAY(1),MONDAY(2),TUESDAY(3),WEDNESDAY(4),THURSDAY(5),FRIDAY(6),SATURDAY(7);
+	UNKNOWN(null),
+	SUNDAY(1),
+	MONDAY(2),
+	TUESDAY(3),
+	WEDNESDAY(4),
+	THURSDAY(5),
+	FRIDAY(6),
+	SATURDAY(7);
 	
 	public final Integer id;
 	
