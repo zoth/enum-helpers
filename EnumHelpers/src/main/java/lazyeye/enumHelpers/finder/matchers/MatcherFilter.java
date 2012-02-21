@@ -1,9 +1,11 @@
 package lazyeye.enumHelpers.finder.matchers;
 
-public abstract class MatcherFilter<I, K> implements MatcherStrategy<I, K> {
-	private MatcherStrategy<I, K> matcher;
+import lazyeye.enumHelpers.finder.core.KeyMatcher;
+
+public abstract class MatcherFilter<I, K> implements KeyMatcher<I, K> {
+	private KeyMatcher<I, K> matcher;
 	
-	public MatcherFilter(MatcherStrategy<I, K> m){
+	public MatcherFilter(KeyMatcher<I, K> m){
 		matcher = m;
 	}
 	

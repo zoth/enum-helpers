@@ -1,12 +1,14 @@
 package lazyeye.enumHelpers.finder.matchers;
 
+import lazyeye.enumHelpers.finder.core.KeyMatcher;
 
-public class AndMatcher<I, K> implements MatcherStrategy<I, K> {
 
-	private MatcherStrategy<I, K> matcher1;
-	private MatcherStrategy<I, K> matcher2;
+public class AndMatcher<I, K> implements KeyMatcher<I, K> {
+
+	private KeyMatcher<I, K> matcher1;
+	private KeyMatcher<I, K> matcher2;
 	
-	public AndMatcher(MatcherStrategy<I, K> m1, MatcherStrategy<I, K> m2){
+	public AndMatcher(KeyMatcher<I, K> m1, KeyMatcher<I, K> m2){
 		matcher1 = m1;
 		matcher2 = m2;
 	}

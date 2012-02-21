@@ -8,12 +8,12 @@ import java.util.Map;
 
 import lazyeye.enumHelpers.finder.EnumFinderKey;
 
-public class AnnotationKeyedProvider<E extends Enum<E>, C> implements KeyProvider<E, C> {
+public class AnnotatedKeyProvider<E extends Enum<E>, C> implements KeyProvider<E, C> {
 
 	private Map<E, C> codesMap;
 
 	@SuppressWarnings("unchecked")
-	public AnnotationKeyedProvider(Class<E> enumClass, Class<C> codeClass,
+	public AnnotatedKeyProvider(Class<E> enumClass, Class<C> codeClass,
 			String annotatedId){
 		codesMap = new EnumMap<E, C>(enumClass);
 		
@@ -70,7 +70,6 @@ public class AnnotationKeyedProvider<E extends Enum<E>, C> implements KeyProvide
 								"annotated method not returning value of type "
 										+ codeClass.getName());
 					}
-//					Object obj;
 					try {
 						Object obj = method.invoke(enum_);
 						codesMap.put(enum_, (C)obj);
@@ -79,12 +78,6 @@ public class AnnotationKeyedProvider<E extends Enum<E>, C> implements KeyProvide
 					} catch (InvocationTargetException e) {
 						throw new RuntimeException(e);
 					}
-//					if (obj != null && !obj.getClass().isAssignableFrom(codeClass)) {
-//						throw new IllegalArgumentException(
-//								"annotated method not returning value of type "
-//										+ codeClass.getName());
-//					}
-				//	codesMap.put(enum_, (C)obj);
 				}
 			}
 		}

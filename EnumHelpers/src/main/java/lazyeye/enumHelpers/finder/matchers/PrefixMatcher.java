@@ -1,6 +1,8 @@
 package lazyeye.enumHelpers.finder.matchers;
 
-public class PrefixMatcher implements MatcherStrategy<String, String> {
+import lazyeye.enumHelpers.finder.core.KeyMatcher;
+
+public class PrefixMatcher implements KeyMatcher<String, String> {
 
 	public boolean matches(String input, String key) {
 		if(input == null || key == null){

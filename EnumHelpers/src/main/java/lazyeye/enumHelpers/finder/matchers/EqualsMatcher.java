@@ -1,6 +1,8 @@
 package lazyeye.enumHelpers.finder.matchers;
 
-public class EqualsMatcher<I, K> implements MatcherStrategy<I, K> {
+import lazyeye.enumHelpers.finder.core.KeyMatcher;
+
+public class EqualsMatcher<I, K> implements KeyMatcher<I, K> {
 	
 	public boolean matches(I input, K key) {
 		if(input == null){

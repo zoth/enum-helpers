@@ -3,9 +3,11 @@ package lazyeye.enumHelpers.finder.matchers;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+
+import lazyeye.enumHelpers.finder.core.KeyMatcher;
 import lazyeye.enumHelpers.finder.core.KeyProvider;
 
-public class RegexMatcher<E extends Enum<E>> implements MatcherStrategy<String, String> {
+public class RegexMatcher<E extends Enum<E>> implements KeyMatcher<String, String> {
 
 	private Map<String,Pattern> patterns = null;
 	Class<E> enumClass;

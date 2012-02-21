@@ -4,9 +4,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import lazyeye.enumHelpers.finder.core.EnumFinder;
-import lazyeye.enumHelpers.finder.core.BaseEnumFinder;
-import lazyeye.enumHelpers.finder.matchers.MatcherStrategy;
-import lazyeye.enumHelpers.finder.IntegerKeyedProvider;
+import lazyeye.enumHelpers.finder.core.EnumFinderComposite;
+import lazyeye.enumHelpers.finder.core.KeyMatcher;
+import lazyeye.enumHelpers.finder.IntegerKeyProvider;
 
 public enum Weekday {
 	
@@ -25,8 +25,8 @@ public enum Weekday {
 		id = id_;
 	}
 	
-	private static EnumFinder<Weekday, Date> finder = new BaseEnumFinder<Weekday, Date, Integer>(
-			Weekday.class, new MatcherStrategy<Date, Integer>() {
+	private static EnumFinder<Weekday, Date> finder = new EnumFinderComposite<Weekday, Date, Integer>(
+			Weekday.class, new KeyMatcher<Date, Integer>() {
 
 				public boolean matches(Date input, Integer key) {
 					if (input != null && key != null) {
@@ -36,7 +36,7 @@ public enum Weekday {
 					}
 					return false;
 				}
-			}, new IntegerKeyedProvider<Weekday>() {
+			}, new IntegerKeyProvider<Weekday>() {
 
 				public Integer key(Weekday enum1) {
 					return enum1.id;

@@ -1,11 +1,11 @@
 package lazyeye.enumHelpers.finder;
 
-import lazyeye.enumHelpers.finder.core.AnnotationKeyedProvider;
-import lazyeye.enumHelpers.finder.core.BaseEnumFinder;
+import lazyeye.enumHelpers.finder.core.AnnotatedKeyProvider;
+import lazyeye.enumHelpers.finder.core.EnumFinderComposite;
+import lazyeye.enumHelpers.finder.core.KeyMatcher;
 import lazyeye.enumHelpers.finder.core.KeyProvider;
 import lazyeye.enumHelpers.finder.matchers.EqualsIgnoreCaseMatcher;
 import lazyeye.enumHelpers.finder.matchers.EqualsMatcher;
-import lazyeye.enumHelpers.finder.matchers.MatcherStrategy;
 import lazyeye.enumHelpers.finder.matchers.PostfixMatcher;
 import lazyeye.enumHelpers.finder.matchers.PrefixMatcher;
 import lazyeye.enumHelpers.finder.matchers.RegexMatcher;
@@ -13,9 +13,9 @@ import lazyeye.enumHelpers.finder.matchers.RegexMatcher;
 public class StringEnumFinders {
 
 	public static <E extends Enum<E>> StringEnumFinder<E> fromAnnotatedKey(
-			Class<E> clazz, String tag, MatcherStrategy<String, String> matcher) {
-		KeyProvider<E, String> keyProvider = new AnnotationKeyedProvider<E,String>(clazz, String.class, tag);
-		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, keyProvider));
+			Class<E> clazz, String tag, KeyMatcher<String, String> matcher) {
+		KeyProvider<E, String> keyProvider = new AnnotatedKeyProvider<E,String>(clazz, String.class, tag);
+		return new StringEnumFinder<E>(new EnumFinderComposite<E,String,String>(clazz, matcher, keyProvider));
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> fromAnnotatedKeyMatchEquals(
@@ -40,39 +40,39 @@ public class StringEnumFinders {
 
 	public static <E extends Enum<E>> StringEnumFinder<E> fromAnnotatedKeyMatchRegex(
 			Class<E> clazz, String tag) {
-		KeyProvider<E, String> keyProvider = new AnnotationKeyedProvider<E,String>(clazz, String.class, tag);
+		KeyProvider<E, String> keyProvider = new AnnotatedKeyProvider<E,String>(clazz, String.class, tag);
 		RegexMatcher<E> matcher = new RegexMatcher<E>(clazz,keyProvider);
-		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, keyProvider));
+		return new StringEnumFinder<E>(new EnumFinderComposite<E,String,String>(clazz, matcher, keyProvider));
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchRegex(
 			Class<E> clazz, KeyProvider<E, String> keyProvider) {
 		RegexMatcher<E> matcher = new RegexMatcher<E>(clazz,keyProvider);
-		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, keyProvider));
+		return new StringEnumFinder<E>(new EnumFinderComposite<E,String,String>(clazz, matcher, keyProvider));
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProvider(
-			Class<E> clazz, MatcherStrategy<String, String> matcher, StringKeyedProvider<E> keyProvider) {
-		return new StringEnumFinder<E>(new BaseEnumFinder<E,String,String>(clazz, matcher, keyProvider));
+			Class<E> clazz, KeyMatcher<String, String> matcher, StringKeyProvider<E> keyProvider) {
+		return new StringEnumFinder<E>(new EnumFinderComposite<E,String,String>(clazz, matcher, keyProvider));
 	}
 	
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchEquals(
-			Class<E> clazz, StringKeyedProvider<E> keyProvider) {
+			Class<E> clazz, StringKeyProvider<E> keyProvider) {
 		return fromKeyProvider(clazz, new EqualsMatcher<String, String>(), keyProvider);
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchEqualsIgnoreCase(
-			Class<E> clazz, StringKeyedProvider<E> keyProvider) {
+			Class<E> clazz, StringKeyProvider<E> keyProvider) {
 		return fromKeyProvider(clazz, new EqualsIgnoreCaseMatcher(), keyProvider);
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchPrefix(
-			Class<E> clazz, StringKeyedProvider<E> keyProvider) {
+			Class<E> clazz, StringKeyProvider<E> keyProvider) {
 		return fromKeyProvider(clazz, new PrefixMatcher(), keyProvider);
 	}
 
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchPostfix(
-			Class<E> clazz, StringKeyedProvider<E> keyProvider) {
+			Class<E> clazz, StringKeyProvider<E> keyProvider) {
 		return fromKeyProvider(clazz, new PostfixMatcher(), keyProvider);
 	}
 
