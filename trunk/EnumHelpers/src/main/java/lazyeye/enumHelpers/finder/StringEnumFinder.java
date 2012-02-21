@@ -10,6 +10,9 @@ import lazyeye.enumHelpers.finder.core.EnumFinderFacade;
  */
 public class StringEnumFinder<E extends Enum<E>> extends EnumFinderFacade<E,String>{
 
+	/**
+	 * @param f
+	 */
 	public StringEnumFinder(EnumFinder<E, String> f) {
 		super(f);
 	}

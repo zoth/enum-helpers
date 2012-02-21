@@ -8,10 +8,21 @@ import java.util.Map;
 
 import lazyeye.enumHelpers.finder.EnumFinderKey;
 
+/**
+ * @author Tom McGee
+ *
+ * @param <E>
+ * @param <C>
+ */
 public class AnnotatedKeyProvider<E extends Enum<E>, C> implements KeyProvider<E, C> {
 
 	private Map<E, C> codesMap;
 
+	/**
+	 * @param enumClass
+	 * @param codeClass
+	 * @param annotatedId
+	 */
 	@SuppressWarnings("unchecked")
 	public AnnotatedKeyProvider(Class<E> enumClass, Class<C> codeClass,
 			String annotatedId){
@@ -88,6 +99,9 @@ public class AnnotatedKeyProvider<E extends Enum<E>, C> implements KeyProvider<E
 	}
 	
 
+	/* (non-Javadoc)
+	 * @see lazyeye.enumHelpers.finder.core.KeyProvider#key(java.lang.Enum)
+	 */
 	public C key(E enum_) {
 		return codesMap.get(enum_);
 	}
