@@ -1,11 +1,19 @@
 package lazyeye.enumHelpers.finder.core;
 
 
-public class EnumFinderWraper<E extends Enum<E>,I> {
+/**
+ * @author Tom McGee
+ *
+ * EnumFinderFacade is a handy facade for EnumFinder to make the API simpler to use.
+ * 
+ * @param <E>
+ * @param <I>
+ */
+public class EnumFinderFacade<E extends Enum<E>,I> {
 	
 	private EnumFinder<E,I> finder;
 	
-	public EnumFinderWraper(EnumFinder<E,I> f){
+	public EnumFinderFacade(EnumFinder<E,I> f){
 		finder = f;
 	}
 	

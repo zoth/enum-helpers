@@ -1,9 +1,14 @@
 package lazyeye.enumHelpers.finder;
 
 import lazyeye.enumHelpers.finder.core.EnumFinder;
-import lazyeye.enumHelpers.finder.core.EnumFinderWraper;
+import lazyeye.enumHelpers.finder.core.EnumFinderFacade;
 
-public class StringEnumFinder<E extends Enum<E>> extends EnumFinderWraper<E,String>{
+/**
+ * @author Tom McGee
+ *
+ * @param <E>
+ */
+public class StringEnumFinder<E extends Enum<E>> extends EnumFinderFacade<E,String>{
 
 	public StringEnumFinder(EnumFinder<E, String> f) {
 		super(f);

@@ -1,11 +1,13 @@
 package lazyeye.enumHelpers.finder.matchers;
 
-public class OrMatcher<I, K> implements MatcherStrategy<I, K> {
+import lazyeye.enumHelpers.finder.core.KeyMatcher;
 
-	private MatcherStrategy<I, K> matcher1;
-	private MatcherStrategy<I, K> matcher2;
+public class OrMatcher<I, K> implements KeyMatcher<I, K> {
+
+	private KeyMatcher<I, K> matcher1;
+	private KeyMatcher<I, K> matcher2;
 	
-	public OrMatcher(MatcherStrategy<I, K> m1, MatcherStrategy<I, K> m2){
+	public OrMatcher(KeyMatcher<I, K> m1, KeyMatcher<I, K> m2){
 		matcher1 = m1;
 		matcher2 = m2;
 	}
