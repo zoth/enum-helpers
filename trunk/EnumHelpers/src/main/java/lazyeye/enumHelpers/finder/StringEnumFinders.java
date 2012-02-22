@@ -22,12 +22,14 @@ public class StringEnumFinders {
 	/**
 	 * 
 	 * The fromAnnotatedKey method is a factory that builds an instance of StringEnumFinder.
+	 * The target Enum is marked with a EnumFinderKey annotation to show what field or method
+	 * will provide the key used for matching. 
 	 *  
-	 * @param <E>
-	 * @param clazz
-	 * @param tag
-	 * @param matcher
-	 * @return
+	 * @param <E>      target Enum.
+	 * @param clazz    class of the target Enum.
+	 * @param tag      value of EnumFinderKey annotation.
+	 * @param matcher  strategy for matching the input to the key.
+	 * @return         the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromAnnotatedKey(
 			Class<E> clazz, String tag, KeyMatcher<String, String> matcher) {
@@ -36,10 +38,15 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param tag
-	 * @return
+	 * 
+	 * The fromAnnotatedKeyMatchEquals method is a factory that builds an instance of StringEnumFinder.
+	 * The target Enum is marked with a EnumFinderKey annotation to show what field or method
+	 * will provide the key used for matching. The matching strategy is a simple equals test.
+	 *  
+	 * @param <E>      target Enum.
+	 * @param clazz    class of the target Enum.
+	 * @param tag      value of EnumFinderKey annotation.
+	 * @return         the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromAnnotatedKeyMatchEquals(
 			Class<E> clazz, String tag) {
@@ -47,10 +54,15 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param tag
-	 * @return
+	 * 
+	 * The fromAnnotatedKeyMatchEqualsIgnoreCase method is a factory that builds an instance of StringEnumFinder.
+	 * The target Enum is marked with a EnumFinderKey annotation to show what field or method
+	 * will provide the key used for matching. The matching strategy is an equals test where case is ignored.
+	 *  
+	 * @param <E>      target Enum.
+	 * @param clazz    class of the target Enum.
+	 * @param tag      value of EnumFinderKey annotation.
+	 * @return         the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromAnnotatedKeyMatchEqualsIgnoreCase(
 			Class<E> clazz, String tag) {
@@ -58,10 +70,16 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param tag
-	 * @return
+	 * 
+	 * The fromAnnotatedKeyMatchPrefix method is a factory that builds an instance of StringEnumFinder.
+	 * The target Enum is marked with a EnumFinderKey annotation to show what field or method
+	 * will provide the key used for matching. The matching strategy is a test where the input value is prefixed
+	 * with the key value.
+	 *  
+	 * @param <E>      target Enum.
+	 * @param clazz    class of the target Enum.
+	 * @param tag      value of EnumFinderKey annotation.
+	 * @return         the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromAnnotatedKeyMatchPrefix(
 			Class<E> clazz, String tag) {
@@ -69,10 +87,16 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param tag
-	 * @return
+	 * 
+	 * The fromAnnotatedKeyMatchPostfix method is a factory that builds an instance of StringEnumFinder.
+	 * The target Enum is marked with a EnumFinderKey annotation to show what field or method
+	 * will provide the key used for matching. The matching strategy is a test where the input value is post-fixed
+	 * with the key value.
+	 *  
+	 * @param <E>      target Enum.
+	 * @param clazz    class of the target Enum.
+	 * @param tag      value of EnumFinderKey annotation.
+	 * @return         the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromAnnotatedKeyMatchPostfix(
 			Class<E> clazz, String tag) {
@@ -80,10 +104,16 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param tag
-	 * @return
+	 * 
+	 * The fromAnnotatedKeyMatchRegex method is a factory that builds an instance of StringEnumFinder.
+	 * The target Enum is marked with a EnumFinderKey annotation to show what field or method
+	 * will provide the key used for matching. The matching strategy is at test where the input value matches
+	 * a regex key value. 
+	 *  
+	 * @param <E>      target Enum.
+	 * @param clazz    class of the target Enum.
+	 * @param tag      value of EnumFinderKey annotation.
+	 * @return         the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromAnnotatedKeyMatchRegex(
 			Class<E> clazz, String tag) {
@@ -93,10 +123,15 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param keyProvider
-	 * @return
+	 * 
+	 * The fromKeyProviderMatchRegex method is a factory that builds an instance of StringEnumFinder.
+	 * The key value from the target Enum is obtained from the strategy of the KeyProvider argument. 
+     * The matching strategy is at test where the input value matches a regex key value.
+     * 
+	 * @param <E>          target Enum.
+	 * @param clazz        class of the target Enum.
+	 * @param keyProvider  strategy for getting the key value from the target Enum.
+	 * @return             the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchRegex(
 			Class<E> clazz, KeyProvider<E, String> keyProvider) {
@@ -105,11 +140,15 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param matcher
-	 * @param keyProvider
-	 * @return
+	 * 
+	 * The fromKeyProvider method is a factory that builds an instance of StringEnumFinder.
+	 * The key value from the target Enum is obtained from the strategy of the KeyProvider argument. 
+     * 
+	 * @param <E>          target Enum.
+	 * @param clazz        class of the target Enum.
+	 * @param matcher      strategy for matching the input to the key.
+	 * @param keyProvider  strategy for getting the key value from the target Enum.
+	 * @return             the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProvider(
 			Class<E> clazz, KeyMatcher<String, String> matcher, StringKeyProvider<E> keyProvider) {
@@ -117,10 +156,15 @@ public class StringEnumFinders {
 	}
 	
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param keyProvider
-	 * @return
+	 * 
+	 * The fromKeyProviderMatchEquals method is a factory that builds an instance of StringEnumFinder.
+	 * The key value from the target Enum is obtained from the strategy of the KeyProvider argument. 
+     * The matching strategy is a simple equals test.
+     * 
+	 * @param <E>          target Enum.
+	 * @param clazz        class of the target Enum.
+	 * @param keyProvider  strategy for getting the key value from the target Enum.
+	 * @return             the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchEquals(
 			Class<E> clazz, StringKeyProvider<E> keyProvider) {
@@ -128,10 +172,15 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param keyProvider
-	 * @return
+	 * 
+	 * The fromKeyProviderMatchEqualsIgnoreCase method is a factory that builds an instance of StringEnumFinder.
+	 * The key value from the target Enum is obtained from the strategy of the KeyProvider argument. 
+     * The matching strategy is an equals test where case is ignored.
+     * 
+	 * @param <E>          target Enum.
+	 * @param clazz        class of the target Enum.
+	 * @param keyProvider  strategy for getting the key value from the target Enum.
+	 * @return             the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchEqualsIgnoreCase(
 			Class<E> clazz, StringKeyProvider<E> keyProvider) {
@@ -139,10 +188,15 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param keyProvider
-	 * @return
+	 * 
+	 * The fromKeyProviderMatchPrefix method is a factory that builds an instance of StringEnumFinder.
+	 * The key value from the target Enum is obtained from the strategy of the KeyProvider argument. 
+      * The matching strategy is a test where the input value is prefixed with the key value.
+     * 
+	 * @param <E>          target Enum.
+	 * @param clazz        class of the target Enum.
+	 * @param keyProvider  strategy for getting the key value from the target Enum.
+	 * @return             the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchPrefix(
 			Class<E> clazz, StringKeyProvider<E> keyProvider) {
@@ -150,10 +204,15 @@ public class StringEnumFinders {
 	}
 
 	/**
-	 * @param <E>
-	 * @param clazz
-	 * @param keyProvider
-	 * @return
+	 * 
+	 * The fromKeyProviderMatchPostfix method is a factory that builds an instance of StringEnumFinder.
+	 * The key value from the target Enum is obtained from the strategy of the KeyProvider argument. 
+     * The matching strategy is a test where the input value is post-fixed with the key value.
+     *     
+	 * @param <E>          target Enum.
+	 * @param clazz        class of the target Enum.
+	 * @param keyProvider  strategy for getting the key value from the target Enum.
+	 * @return             the StringEnumFinder that is built.
 	 */
 	public static <E extends Enum<E>> StringEnumFinder<E> fromKeyProviderMatchPostfix(
 			Class<E> clazz, StringKeyProvider<E> keyProvider) {
