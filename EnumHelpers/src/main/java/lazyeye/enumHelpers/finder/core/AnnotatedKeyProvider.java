@@ -11,27 +11,30 @@ import lazyeye.enumHelpers.finder.EnumFinderKey;
 /**
  * @author Tom McGee
  *
- * @param <E>
- * @param <C>
+ * @param <E> target Enum type.
+ * @param <K> key type.
  */
-public class AnnotatedKeyProvider<E extends Enum<E>, C> implements KeyProvider<E, C> {
+public class AnnotatedKeyProvider<E extends Enum<E>, K> implements KeyProvider<E, K> {
 
-	private Map<E, C> codesMap;
+	private Map<E, K> keysMap;
 
 	/**
-	 * @param enumClass
-	 * @param codeClass
-	 * @param annotatedId
+	 * 
+	 * 
+	 * 
+	 * @param enumClass   class of target Enum.
+	 * @param keyClass    class of key.
+	 * @param tag         identifying value for annotation.
 	 */
 	@SuppressWarnings("unchecked")
-	public AnnotatedKeyProvider(Class<E> enumClass, Class<C> codeClass,
-			String annotatedId){
-		codesMap = new EnumMap<E, C>(enumClass);
+	public AnnotatedKeyProvider(Class<E> enumClass, Class<K> keyClass,
+			String tag){
+		keysMap = new EnumMap<E, K>(enumClass);
 		
 		boolean found = false;
 		for(Field field:enumClass.getDeclaredFields()){
 			EnumFinderKey enumCoding = field.getAnnotation(EnumFinderKey.class);
-			if (enumCoding != null && enumCoding.value().equals(annotatedId)) {
+			if (enumCoding != null && enumCoding.value().equals(tag)) {
 				if (found) {
 					throw new IllegalArgumentException(
 							"only one field or method can be annotated with same tag value");
@@ -41,14 +44,14 @@ public class AnnotatedKeyProvider<E extends Enum<E>, C> implements KeyProvider<E
 					field.setAccessible(true);
 				}
 				for (E enum_ : enumClass.getEnumConstants()) {
-					if(!field.getType().isAssignableFrom(codeClass)){
+					if(!field.getType().isAssignableFrom(keyClass)){
 						throw new IllegalArgumentException(
 								"annotated field not of type "
-										+ codeClass.getName());
+										+ keyClass.getName());
 					}
 					try {
 						Object obj = field.get(enum_);
-						codesMap.put(enum_, (C)obj);
+						keysMap.put(enum_, (K)obj);
 					}  catch (IllegalAccessException e) {
 						throw new RuntimeException(e);
 					}
@@ -62,7 +65,7 @@ public class AnnotatedKeyProvider<E extends Enum<E>, C> implements KeyProvider<E
 		for (Method method : enumClass.getDeclaredMethods()) {
 
 			EnumFinderKey enumCoding = method.getAnnotation(EnumFinderKey.class);
-			if (enumCoding != null && enumCoding.value().equals(annotatedId)) {
+			if (enumCoding != null && enumCoding.value().equals(tag)) {
 				if (found) {
 					throw new IllegalArgumentException(
 							"only one field or method can be annotated with same tag value");
@@ -76,14 +79,14 @@ public class AnnotatedKeyProvider<E extends Enum<E>, C> implements KeyProvider<E
 							"annotated method cannot have parameters");
 				}
 				for (E enum_ : enumClass.getEnumConstants()) {
-					if(!method.getReturnType().isAssignableFrom(codeClass)){
+					if(!method.getReturnType().isAssignableFrom(keyClass)){
 						throw new IllegalArgumentException(
 								"annotated method not returning value of type "
-										+ codeClass.getName());
+										+ keyClass.getName());
 					}
 					try {
 						Object obj = method.invoke(enum_);
-						codesMap.put(enum_, (C)obj);
+						keysMap.put(enum_, (K)obj);
 					}  catch (IllegalAccessException e) {
 						throw new RuntimeException(e);
 					} catch (InvocationTargetException e) {
@@ -94,7 +97,7 @@ public class AnnotatedKeyProvider<E extends Enum<E>, C> implements KeyProvider<E
 		}
 		if (!found) {
 			throw new IllegalArgumentException(
-					"no method is annotated with id value " + annotatedId);
+					"no method is annotated with id value " + tag);
 		}
 	}
 	
@@ -102,8 +105,8 @@ public class AnnotatedKeyProvider<E extends Enum<E>, C> implements KeyProvider<E
 	/* (non-Javadoc)
 	 * @see lazyeye.enumHelpers.finder.core.KeyProvider#key(java.lang.Enum)
 	 */
-	public C key(E enum_) {
-		return codesMap.get(enum_);
+	public K key(E enum_) {
+		return keysMap.get(enum_);
 	}
 
 }
