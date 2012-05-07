@@ -16,7 +16,6 @@ public class FinderTest {
 		Assert.assertTrue(CompassPoint.find("n") == CompassPoint.NORTH);
 		Assert.assertTrue(CompassPoint.find("zzz") == null);
 		Assert.assertTrue(CompassPoint.find(null) == null);
-
 	}
 	
 	@Test
