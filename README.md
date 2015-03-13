@@ -1,5 +1,4 @@
-![enum-helper Logo](/logo.png)
-# enum-helpers
+![enum-helper Logo](/logo.png) # enum-helpers
 
 Java enums are vary useful but because they can not be sub-classed it can be hard to avoid repetitive code. This project is a set of helper classes that can be added to enums using a composite pattern to share common code.
 
